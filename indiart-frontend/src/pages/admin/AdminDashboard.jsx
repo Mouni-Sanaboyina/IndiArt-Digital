@@ -35,10 +35,16 @@ const AdminDashboard = () => {
             <h1 className="text-4xl font-extrabold text-[#FFA500]">Admin Dashboard</h1>
             <p className="text-gray-400 mt-1">IndiArt Digital — Order Management</p>
           </div>
-          <Link to="/admin/orders"
-            className="bg-[#FFA500] hover:bg-[#FF4500] text-[#1B1B1B] font-bold px-6 py-3 rounded-xl transition">
-            Manage Orders →
-          </Link>
+          <div className="flex gap-3">
+            <Link to="/admin/products"
+              className="border border-[#FFA500] text-[#FFA500] hover:bg-[#FFA500]/10 font-bold px-6 py-3 rounded-xl transition">
+              Manage Products →
+            </Link>
+            <Link to="/admin/orders"
+              className="bg-[#FFA500] hover:bg-[#FF4500] text-[#1B1B1B] font-bold px-6 py-3 rounded-xl transition">
+              Manage Orders →
+            </Link>
+          </div>
         </div>
 
         {loading ? (
