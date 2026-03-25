@@ -1,15 +1,8 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "indiart-frontend/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist"
-      }
-    }
-  ],
-  "routes": [
-    { "src": "/(.*)", "dest": "/indiart-frontend/dist/$1" }
+  "buildCommand": "cd indiart-frontend && npm install && npm run build",
+  "outputDirectory": "indiart-frontend/dist",
+  "framework": "vite",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
-}
+} 
