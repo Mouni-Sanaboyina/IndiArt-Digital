@@ -32,7 +32,7 @@ router.get('/', async (req, res) => {
   try {
     const filter = { isActive: true };
     if (req.query.category) filter.category = req.query.category;
-    const products = await Product.find(filter).select('-pricingMatrix');
+    const products = await Product.find(filter);
     res.json({ products });
   } catch (err) {
     console.error('Get products error:', err);
