@@ -1,194 +1,253 @@
 # IndiArt — Digital Print Shop
 
-A full-stack MERN e-commerce application for a digital print shop. Customers can browse print products, configure size/paper/finish options, add items to cart, upload artwork, and place orders. Admins manage products and update order statuses through a protected dashboard.
+A full-stack MERN e-commerce platform for a digital print shop that enables customers to browse customizable print products, upload artwork, place orders, and track order status. Administrators can manage products, review customer orders, and control the print approval workflow through a secure dashboard.
 
-🌐 **Live Demo:** [indiart-digital.vercel.app](https://indiart-digital.vercel.app/)
-📦 **Repository:** [github.com/Mouni-Sanaboyina/IndiArt-Digital](https://github.com/Mouni-Sanaboyina/IndiArt-Digital)
+🌐 **Live Website:** https://indiart-digital.vercel.app
 
----
+⚙️ **Backend API:** https://indiart-backend-h2esgvdnb7argwcp.centralindia-01.azurewebsites.net
 
-## Table of Contents
-
-- [Live Demo](#live-demo)
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Project Structure](#project-structure)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Backend Setup](#backend-setup)
-  - [Frontend Setup](#frontend-setup)
-- [Environment Variables](#environment-variables)
-- [Deployment](#deployment)
-  - [Backend — Render](#backend--render)
-  - [Frontend — Vercel](#frontend--vercel)
-- [API Reference](#api-reference)
-- [Scripts](#scripts)
+📦 **Repository:** https://github.com/Mouni-Sanaboyina/IndiArt-Digital
 
 ---
 
-## Live Demo
+# Table of Contents
 
-| | URL |
-|---|---|
-| **Frontend** | [https://indiart-digital.vercel.app](https://indiart-digital.vercel.app/) |
-| **Backend API** | Hosted on Render |
-| **Repository** | [github.com/Mouni-Sanaboyina/IndiArt-Digital](https://github.com/Mouni-Sanaboyina/IndiArt-Digital) |
-
-### Demo Credentials
-
-Use these to explore the app without registering:
-
-**Admin**
-| Field | Value |
-|---|---|
-| Email | `admin@indiart.com` |
-| Password | `Admin@123` |
-
-**Regular User** — register a new account via the [Register](https://indiart-digital.vercel.app/register) page, or use any existing seeded user account.
-
-> ⚠️ These are demo credentials for a development/seeded database. Do not use real personal information when testing.
+* Overview
+* Features
+* Technology Stack
+* System Architecture
+* Project Structure
+* Getting Started
+* Environment Variables
+* Deployment
+* API Endpoints
+* Demo Credentials
+* Future Enhancements
+* Author
 
 ---
 
-## Features
+# Overview
 
-**Customer**
-- Browse products by category (Business Cards, Flyers, Posters, T-Shirts, Stickers, Invitations)
-- Configure print options — size (A2/A3/A4), paper type (matte/glossy), finish (standard/premium)
-- Dynamic pricing matrix per product configuration
-- Add to cart, adjust quantities, and checkout
-- Upload custom artwork (JPG, PNG, WebP, PDF — up to 10 MB) with special instructions
-- View order history and track order status
+IndiArt is a modern print-on-demand platform built for digital printing businesses. Customers can browse products such as business cards, flyers, posters, stickers, invitations, brochures, and custom merchandise, upload design files, and place orders online.
 
-**Admin**
-- Manage products — create, update, and soft-delete listings with up to 6 images per product
-- View all orders with optional status filter
-- Review order details including uploaded artwork files
-- Advance order status: `pending → approved → printed` or `rejected` (rejection requires a reason)
-
-**Auth**
-- JWT-based authentication (7-day expiry)
-- Role-based access (`user` / `admin`)
-- Protected routes on both frontend and backend
+The platform includes a complete administrative dashboard that allows shop owners to manage products, review orders, approve artwork submissions, and monitor the printing workflow.
 
 ---
 
-## Tech Stack
+# Features
 
-| Layer | Technology |
-|---|---|
-| Frontend | React 18, React Router v6, Tailwind CSS, Vite |
-| Backend | Node.js, Express 4 |
-| Database | MongoDB (Mongoose 8) |
-| Auth | JSON Web Tokens, bcryptjs |
-| File Storage | Cloudinary (products & artwork) |
-| HTTP Client | Axios |
+## Customer Features
+
+* User registration and login
+* JWT-based authentication
+* Browse products by category
+* Product detail pages
+* Dynamic pricing display
+* Add products to cart
+* Quantity management
+* Upload custom artwork
+* Checkout and order placement
+* View order history
+* Track order status
+
+## Admin Features
+
+* Secure admin dashboard
+* Create products
+* Edit products
+* Delete products
+* Upload multiple product images
+* View all customer orders
+* Review uploaded artwork
+* Approve orders
+* Reject orders with reason
+* Mark orders as printed
+
+## Security Features
+
+* JWT authentication
+* Password hashing using bcrypt
+* Protected admin routes
+* Role-based authorization
+* CORS protection
+* Environment variable configuration
 
 ---
 
-## Project Structure
+# Technology Stack
 
-```
-indiart_MERN/
-├── indiart-backend/
-│   ├── middleware/
-│   │   ├── authMiddleware.js      # JWT verification
-│   │   └── adminMiddleware.js     # Admin role guard
-│   ├── models/
-│   │   ├── User.js
-│   │   ├── Product.js             # Pricing matrix, sizes, paper types, finishes
-│   │   ├── Cart.js
-│   │   └── Order.js               # Order items, delivery details, artwork file, status history
-│   ├── routes/
-│   │   ├── auth.js                # POST /register, POST /login
-│   │   ├── products.js            # CRUD products + Cloudinary image upload
-│   │   ├── cart.js                # Cart management
-│   │   └── orders.js              # Place order, view orders, admin status updates
-│   ├── seed.js                    # Database seeder
-│   ├── server.js
-│   └── .env
+## Frontend
+
+* React 18
+* React Router DOM
+* Vite
+* Tailwind CSS
+* Axios
+
+## Backend
+
+* Node.js
+* Express.js
+
+## Database
+
+* MongoDB Atlas
+* Mongoose
+
+## Authentication
+
+* JSON Web Token (JWT)
+* bcryptjs
+
+## Cloud Services
+
+* Cloudinary (Image Storage)
+* Azure App Service (Backend Hosting)
+* Vercel (Frontend Hosting)
+
+---
+
+# System Architecture
+
+Frontend (React + Vite)
+
+↓
+
+Axios API Calls
+
+↓
+
+Azure App Service
+
+↓
+
+Express.js Backend
+
+↓
+
+MongoDB Atlas Database
+
+↓
+
+Cloudinary Image Storage
+
+---
+
+# Project Structure
+
+```text
+IndiArt-Digital
 │
-└── indiart-frontend/
-    ├── src/
-    │   ├── api/
-    │   │   └── axios.js            # Axios instance with base URL
-    │   ├── components/
-    │   │   ├── Navbar.jsx
-    │   │   ├── ProductCard.jsx
-    │   │   ├── OrderStatusBadge.jsx
-    │   │   ├── ProtectedRoute.jsx  # Redirects unauthenticated users
-    │   │   └── AdminRoute.jsx      # Redirects non-admin users
-    │   ├── context/
-    │   │   ├── AuthContext.jsx     # Auth state + token storage
-    │   │   └── CartContext.jsx     # Cart state
-    │   └── pages/
-    │       ├── Home.jsx
-    │       ├── Services.jsx
-    │       ├── Portfolio.jsx
-    │       ├── Pricing.jsx
-    │       ├── Contact.jsx
-    │       ├── ProductDetail.jsx
-    │       ├── Login.jsx / Register.jsx
-    │       ├── Cart.jsx
-    │       ├── Checkout.jsx        # Delivery form + artwork upload
-    │       ├── OrderConfirmation.jsx
-    │       ├── MyOrders.jsx
-    │       └── admin/
-    │           ├── AdminDashboard.jsx
-    │           ├── AdminProducts.jsx
-    │           ├── AdminOrders.jsx
-    │           └── AdminOrderDetail.jsx
-    ├── index.html
-    ├── vite.config.js
-    └── tailwind.config.js
+├── indiart-backend
+│   ├── middleware
+│   ├── models
+│   ├── routes
+│   ├── uploads
+│   ├── server.js
+│   ├── seed.js
+│   └── package.json
+│
+├── indiart-frontend
+│   ├── public
+│   ├── src
+│   │   ├── components
+│   │   ├── pages
+│   │   ├── context
+│   │   ├── assets
+│   │   └── App.jsx
+│   │
+│   ├── index.html
+│   ├── vite.config.js
+│   └── package.json
+│
+└── README.md
 ```
 
 ---
 
-## Getting Started
+# Getting Started
 
-### Prerequisites
+## Prerequisites
 
-- Node.js 18+
-- A MongoDB instance (Atlas or local)
-- A [Cloudinary](https://cloudinary.com/) account (free tier is sufficient)
+* Node.js 18+
+* MongoDB Atlas Account
+* Cloudinary Account
+* Git
 
-### Backend Setup
+---
+
+## Clone Repository
+
+```bash
+git clone https://github.com/Mouni-Sanaboyina/IndiArt-Digital.git
+
+cd IndiArt-Digital
+```
+
+---
+
+# Backend Setup
 
 ```bash
 cd indiart-backend
+
 npm install
 ```
 
-Create a `.env` file (see [Environment Variables](#environment-variables) below), then start the server:
+Create `.env`
+
+```env
+PORT=5000
+
+MONGO_URI=your_mongodb_connection_string
+
+JWT_SECRET=your_jwt_secret
+
+CLIENT_URL=http://localhost:5173
+
+CLOUDINARY_CLOUD_NAME=your_cloud_name
+
+CLOUDINARY_API_KEY=your_api_key
+
+CLOUDINARY_API_SECRET=your_api_secret
+```
+
+Run Backend
 
 ```bash
-# Development (with auto-reload)
 npm run dev
+```
 
-# Production
+Production
+
+```bash
 npm start
 ```
 
-The API will be available at `http://localhost:5000`.
+---
 
-To seed the database with sample products:
-
-```bash
-npm run seed
-```
-
-### Frontend Setup
+# Frontend Setup
 
 ```bash
 cd indiart-frontend
+
 npm install
+```
+
+Create `.env`
+
+```env
+VITE_API_URL=http://localhost:5000/api
+```
+
+Start Development Server
+
+```bash
 npm run dev
 ```
 
-The app will be available at `http://localhost:5173`.
-
-To create a production build:
+Build Production Version
 
 ```bash
 npm run build
@@ -196,116 +255,144 @@ npm run build
 
 ---
 
-## Environment Variables
+# Deployment
 
-Create `indiart-backend/.env`:
+## Frontend
+
+Hosted on Vercel
+
+Production URL:
+
+https://indiart-digital.vercel.app
+
+Environment Variable:
 
 ```env
-PORT=5000
-MONGO_URI=mongodb+srv://<user>:<password>@cluster.mongodb.net/indiart
-JWT_SECRET=your_jwt_secret_here
-CLIENT_URL=http://localhost:5173
-
-CLOUDINARY_CLOUD_NAME=your_cloud_name
-CLOUDINARY_API_KEY=your_api_key
-CLOUDINARY_API_SECRET=your_api_secret
+VITE_API_URL=https://indiart-backend-h2esgvdnb7argwcp.centralindia-01.azurewebsites.net/api
 ```
 
 ---
 
-## Deployment
+## Backend
 
-### Backend — Render
+Hosted on Microsoft Azure App Service
 
-1. Push `indiart-backend/` to a GitHub repository (or use a monorepo root).
-2. Create a new **Web Service** on [Render](https://render.com).
-3. Set the following:
-   - **Root Directory:** `indiart-backend`
-   - **Build Command:** `npm install`
-   - **Start Command:** `npm start`
-4. Add all [environment variables](#environment-variables) in the Render dashboard under **Environment**.
-5. Set `CLIENT_URL` to your Vercel frontend URL (e.g. `https://indiart-digital.vercel.app`).
-6. Deploy. Render will provide a URL like `https://indiart-backend.onrender.com`.
+Production URL:
 
-> **Note:** Free-tier Render services spin down after inactivity. The first request after idle may take 30–60 seconds.
+https://indiart-backend-h2esgvdnb7argwcp.centralindia-01.azurewebsites.net
 
-### Frontend — Vercel
+Environment Variables:
 
-1. Push `indiart-frontend/` to GitHub.
-2. Import the repository in [Vercel](https://vercel.com).
-3. Set the following in **Project Settings → Environment Variables**:
+```env
+MONGO_URI=
+JWT_SECRET=
+CLIENT_URL=
+CLOUDINARY_CLOUD_NAME=
+CLOUDINARY_API_KEY=
+CLOUDINARY_API_SECRET=
+```
 
-   | Variable | Value |
-   |---|---|
-   | `VITE_API_URL` | Your Render backend URL, e.g. `https://indiart-backend.onrender.com/api` |
-
-4. Vercel auto-detects Vite — the default build settings work out of the box:
-   - **Build Command:** `npm run build`
-   - **Output Directory:** `dist`
-5. Deploy. Vercel will provide a URL like `https://indiart-digital.vercel.app`.
-
-> Make sure `VITE_API_URL` is set before building — Vite inlines env variables at build time.
+Deployment is automated using GitHub Actions.
 
 ---
 
-## API Reference
+# API Endpoints
 
-All endpoints are prefixed with `/api`.
+## Authentication
 
-### Auth
+POST `/api/auth/register`
 
-| Method | Endpoint | Description |
-|---|---|---|
-| POST | `/auth/register` | Register a new user |
-| POST | `/auth/login` | Login and receive a JWT |
-
-### Products
-
-| Method | Endpoint | Auth | Description |
-|---|---|---|---|
-| GET | `/products` | — | List all active products (optional `?category=`) |
-| GET | `/products/:id` | — | Get a single product |
-| POST | `/products` | Admin | Create product (multipart, up to 6 images) |
-| PATCH | `/products/:id` | Admin | Update product |
-| DELETE | `/products/:id` | Admin | Soft-delete (sets `isActive: false`) |
-
-### Cart
-
-| Method | Endpoint | Auth | Description |
-|---|---|---|---|
-| GET | `/cart` | User | Get current cart |
-| POST | `/cart` | User | Add item to cart |
-| PATCH | `/cart/:itemId` | User | Update item quantity |
-| DELETE | `/cart/:itemId` | User | Remove item from cart |
-
-### Orders
-
-| Method | Endpoint | Auth | Description |
-|---|---|---|---|
-| POST | `/orders` | User | Place order from cart (optional artwork file upload) |
-| GET | `/orders/my` | User | List the current user's orders |
-| GET | `/orders` | Admin | List all orders (optional `?status=`) |
-| GET | `/orders/:id` | Admin | Get order details |
-| PATCH | `/orders/:id/status` | Admin | Update status (`approved`, `rejected`, `printed`) |
-
-**Order statuses:** `pending → approved → printed` or `pending → rejected`
+POST `/api/auth/login`
 
 ---
 
-## Scripts
+## Products
 
-### Backend
+GET `/api/products`
 
-| Command | Description |
-|---|---|
-| `npm run dev` | Start with nodemon (hot-reload) |
-| `npm start` | Start for production |
-| `npm run seed` | Seed the database with sample products |
+GET `/api/products/:id`
 
-### Frontend
+POST `/api/products`
 
-| Command | Description |
-|---|---|
-| `npm run dev` | Start Vite dev server |
-| `npm run build` | Build for production |
-| `npm run preview` | Preview the production build |
+PATCH `/api/products/:id`
+
+DELETE `/api/products/:id`
+
+---
+
+## Cart
+
+GET `/api/cart`
+
+POST `/api/cart`
+
+PATCH `/api/cart/:id`
+
+DELETE `/api/cart/:id`
+
+---
+
+## Orders
+
+POST `/api/orders`
+
+GET `/api/orders/my`
+
+GET `/api/orders`
+
+PATCH `/api/orders/:id/status`
+
+---
+
+# Demo Credentials
+
+## Admin
+
+Email:
+
+```text
+admin@indiart.com
+```
+
+Password:
+
+```text
+Admin@123
+```
+
+## User
+
+Create a new account using the Register page.
+
+---
+
+# Future Enhancements
+
+* Razorpay payment integration
+* Email notifications
+* Order invoice generation
+* Product search and filtering
+* Wishlist functionality
+* Customer reviews and ratings
+* Analytics dashboard
+* Multi-vendor support
+* Inventory management
+* Real-time order tracking
+
+---
+
+# Author
+
+**Sanaboyina Mounika**
+
+B.Tech – Computer Science (AI & Data Science)
+
+GitHub:
+https://github.com/Mouni-Sanaboyina
+
+Project:
+https://indiart-digital.vercel.app
+
+---
+
+If you found this project useful, consider giving the repository a ⭐ on GitHub.
