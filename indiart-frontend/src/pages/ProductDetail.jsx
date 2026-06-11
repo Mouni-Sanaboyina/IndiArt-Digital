@@ -92,11 +92,11 @@ const ProductDetail = () => {
         <div>
           <div className="bg-[#002B50] rounded-2xl overflow-hidden h-80 flex items-center justify-center">
             {product.images?.length > 0 ? (
-              <img
-                src={`http://localhost:5000/uploads/${product.images[currentImage]}`}
-                alt={product.name}
-                className="w-full h-full object-cover"
-              />
+            <img
+              src={`/images/${product.images[currentImage]}`}
+              alt={product.name}
+              className="w-full h-full object-cover"
+            />
             ) : (
               <p className="text-gray-500">No image</p>
             )}
@@ -107,7 +107,11 @@ const ProductDetail = () => {
               {product.images.map((img, i) => (
                 <button key={i} onClick={() => setCurrentImage(i)}
                   className={`w-16 h-16 rounded-lg overflow-hidden border-2 transition ${i === currentImage ? 'border-[#FFA500]' : 'border-transparent'}`}>
-                  <img src={`http://localhost:5000/uploads/${img}`} alt="" className="w-full h-full object-cover" />
+                  <img
+                    src={`/images/${img}`}
+                    alt=""
+                    className="w-full h-full object-cover"
+                  />
                 </button>
               ))}
             </div>
