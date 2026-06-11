@@ -383,7 +383,7 @@ Create a new account using the Register page.
 
 # Author
 
-**Sanaboyina Mounika**
+**Mounika Sanaboyina**
 
 B.Tech – Computer Science (AI & Data Science)
 
