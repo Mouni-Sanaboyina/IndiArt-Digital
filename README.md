@@ -10,6 +10,7 @@ A full-stack MERN e-commerce platform for a digital print shop that enables cust
 
 ---
 
+
 # Table of Contents
 
 * Overview
